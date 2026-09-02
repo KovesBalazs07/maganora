@@ -1,0 +1,17 @@
+probléma meghatározása (miért választottuk a projektet)
+tervezés
+(esetleg) sablonszöveg
+használt technológiák
+adatbázis (ER és UML (részletes))
+fejlesztési környezetek (xampp,nodejs,angular)
+funkciók(belépés,tárolás,összefoglaló,súgó)
+felhasználói folyamat (esetleg)
+kommunikáció (esetleg)
+tesztelés(jasmine,jest)
+mobilalkalmazás (is)
+reszponzív
+idővonal (ütemterv)
+SWOT (felsorolni)
+továbbfejlesztési lehetőségek
+
+házi feladat: projektet GitHubon projektnévvel; csapatvezető; főmappák; 1.almappa: tervezési dokumentumok (péntek .docx és .pdf általános specifikáció)
