@@ -5,3 +5,5 @@ Mikor van hely? (időpont)
 Mennyi lehet egy napon?
 (esetleg) milyen tárgyból?
 Milyen típusú (online vagy jelenléti)
+
+jövőhét péntek:dokumentáció (Word/pdf)
