@@ -1,9 +1,19 @@
 Magánórák matekból
 
-Mikor van hely? (időpont)
-Milyen típusú (online vagy jelenléti)
-Milyen célból (érettségi,továbbtanulás,emelt szint)
-tanárok megadják mikor van időpont
+Követhető az órák időpontja, mennyisége
+Tartalmaz naptárat- látható, milyen szabad időpontok vannak, ha van foglalt időpont és valaki lemondja, magától szabaddá válik (foglalható)
+Azok látják az időpontot, akik regisztrálnak (a foglalás regisztrációhoz kötött)-időtartam
+Regisztrálásnál meg kell adni, mit szeretnél (érettségi, továbbtanulás, emelt szint, felvételi)-online/jelenléti
+rendszeres/alkalmi/feladatmegoldás
+hónap végén a rendszer összesíti, kinek hány órája van-összeg
+tanár foglal időpontot-nem foglalható időpont (módosítás)
+korlátozás-időpontot max. 24 órával előtte lemondható
+
+
+
+
+
+
 
 oktass.hu:Találd meg a tökéletes oktatót,Magántanárok, tananyagok és előadások egy helyen. 286+ tanár, 426+ tantárgy, 77+ helyszín,tantárgyak listája,kategóriák,keresés (akár helyszín is),magánórák száma, cikkek
 tutimagantanar.hu:tantárgy,típus,helyszín keresése,tanárok adatai,Legnépszerűbb magántanár keresések,Legújabb magántanárok
