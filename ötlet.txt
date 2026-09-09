@@ -15,9 +15,9 @@ korlátozás-időpontot max. 24 órával előtte lemondható
 
 
 
-oktass.hu:Találd meg a tökéletes oktatót,Magántanárok, tananyagok és előadások egy helyen. 286+ tanár, 426+ tantárgy, 77+ helyszín,tantárgyak listája,kategóriák,keresés (akár helyszín is),magánórák száma, cikkek
-tutimagantanar.hu:tantárgy,típus,helyszín keresése,tanárok adatai,Legnépszerűbb magántanár keresések,Legújabb magántanárok
-onlinetanar.hu:tanárok adatai (név,módszer,miben seít,stílus,óradíj,elérhetőség,stb),tantárgy választása
-tanarajanlo.hu: helység és tárgy kiválasztása,tanárok adatai részletes adatlappal, tanárkereső
+oktass.hu: Találd meg a tökéletes oktatót, Magántanárok, tananyagok és előadások egy helyen. 286+ tanár, 426+ tantárgy, 77+ helyszín, tantárgyak listája, kategóriák, keresés (akár helyszín is),magánórák száma, cikkek
+tutimagantanar.hu: tantárgy, típus, helyszín keresése, tanárok adatai, Legnépszerűbb magántanár keresések, Legújabb magántanárok
+onlinetanar.hu:tanárok adatai (név, módszer, miben segít, stílus, óradíj, elérhetőség, stb),tantárgy választása
+tanarajanlo.hu: helység és tárgy kiválasztása, tanárok adatai részletes adatlappal, tanárkereső
 
-jövőhét péntek:dokumentáció (Word/pdf)
+jövőhét péntek: dokumentáció (Word/pdf) sorkizárt, formázott, helyes, legalább 2 oldal
