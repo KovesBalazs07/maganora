@@ -1,0 +1,8 @@
+er-modell
+uml-diagram
+
+Adatbázis mappa->tervezés->er-modell, uml-diagram, tervezés.docx,tervezés.pdf 09.24 estig
+
+táblák tervezése (hány tábla)
+táblák adatai
+kapcsolati réteg
