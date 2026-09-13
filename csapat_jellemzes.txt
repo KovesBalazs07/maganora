@@ -1,6 +1,6 @@
 Magánóra fejlesztő webalkalmazás
 
-Csapatunk két főből áll, **Kind Martinból és Kövesligeti Balázsból**. Mindketten a **Fehérgyarmati Petőfi Sándor Technikumban** tanulunk, és körülbelül **4 éve foglalkozunk programozással és informatikával**.
+Csapatunk két főből áll, Kind Martinból és Kövesligeti Balázsból. Mindketten a Fehérgyarmati Petőfi Sándor Technikumban tanulunk, és körülbelül 4 éve foglalkozunk programozással és informatikával.
 
 A közös munkánk során megtanultunk együtt dolgozni, felosztani egymás között a feladatokat, valamint közösen megoldani a felmerülő problémákat. Mindketten érdeklődünk az informatika és a programozás iránt, ezért a projekt elkészítése során igyekszünk a korábban megszerzett tudásunkat is felhasználni.
 
