@@ -1,0 +1,11 @@
+Magánóra fejlesztő webalkalmazás
+
+Csapatunk két főből áll, **Kind Martinból és Kövesligeti Balázsból**. Mindketten a **Fehérgyarmati Petőfi Sándor Technikumban** tanulunk, és körülbelül **4 éve foglalkozunk programozással és informatikával**.
+
+A közös munkánk során megtanultunk együtt dolgozni, felosztani egymás között a feladatokat, valamint közösen megoldani a felmerülő problémákat. Mindketten érdeklődünk az informatika és a programozás iránt, ezért a projekt elkészítése során igyekszünk a korábban megszerzett tudásunkat is felhasználni.
+
+Projektünk célja egy olyan **matematikai magántanár-kereső és hirdetési felület** létrehozása, amely megkönnyíti a diákok számára a megfelelő magántanár megtalálását, a tanárok számára pedig lehetőséget biztosít saját szolgáltatásaik meghirdetésére. A rendszerben a tanárok és a diákok számára is hasznos funkciókat szeretnénk kialakítani, például a tanórák és időpontok kezelését.
+
+A projekt során törekszünk arra, hogy a feladatokat igazságosan osszuk meg egymás között, és a problémákat közösen beszéljük meg. Ha valamelyikünk elakad egy feladattal, a másik segítséget nyújt, így a munkát együtt tudjuk tovább folytatni.
+
+A négy év alatt megszerzett informatikai ismereteinkre támaszkodva szeretnénk egy olyan projektet létrehozni, amely nemcsak megfelel a vizsgaremek követelményeinek, hanem egy valós problémára is használható megoldást kínál.
