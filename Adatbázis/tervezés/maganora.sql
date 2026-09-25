@@ -48,11 +48,11 @@ CREATE TABLE IF NOT EXISTS `ertekeles` (
 
 -- Dumping data for table maganora.ertekeles: ~5 rows (approximately)
 INSERT INTO `ertekeles` (`id`, `diak_id`, `pontszam`, `velemeny`) VALUES
-	(1, 5, 10, 'tökéletes'),
-	(2, 2, 4, 'nem megfelelő'),
-	(3, 1, 6, 'jó'),
-	(4, 3, 9, 'tökéletes'),
-	(5, 4, 5, 'jó');
+	(1, 5, 5, 'tökéletes'),
+	(2, 2, 2, 'nem megfelelő'),
+	(3, 1, 3, 'jó'),
+	(4, 3, 4, 'tökéletes'),
+	(5, 4, 3, 'jó');
 
 -- Dumping structure for table maganora.idopont
 CREATE TABLE IF NOT EXISTS `idopont` (
