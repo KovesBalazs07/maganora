@@ -1,0 +1,6 @@
+jövőhét péntek
+frontend részről
+Frontend -> tervezés -> .svg-k vagy .png-k vagy .jpg-k, dokumentáció
+weboldal hálózat, rácsszerkezet elkészítése képek
+wireframe ábrák
+mobil, tablet és pc nézet
