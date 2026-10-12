@@ -1,0 +1,5 @@
+backend szerver elkészítése
+Backend mappa->Szerver-side(node) + echo api collection(lekérdezések)
+	     ->rest API.docx rest API.pdf
+
+10.29-ig
