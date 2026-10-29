@@ -1,0 +1,499 @@
+{
+  "info": {
+    "name": "Magánóra REST API",
+    "description": "Egyszerű CRUD kérések. Először a 02 mappában hozz létre új rekordokat, és másold a válasz data.id értékét a megfelelő gyűjteményváltozóba. Ezután futtatható a lekérdezés, módosítás és törlés. A törlés a 06 mappa sorrendjében történjen.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:3000/api"
+    },
+    {
+      "key": "diakId",
+      "value": ""
+    },
+    {
+      "key": "ertekelesId",
+      "value": ""
+    },
+    {
+      "key": "tanarId",
+      "value": ""
+    },
+    {
+      "key": "idopontId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Állapot",
+      "item": [
+        {
+          "name": "Adatbázis és szerver ellenőrzése",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/health",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 Létrehozás kapcsolati sorrendben",
+      "item": [
+        {
+          "name": "diak létrehozása",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/diak",
+            "description": "Elvárt HTTP státusz: 201.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nev\": \"Teszt Diák\",\n  \"email\": \"teszt.diak@example.hu\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ertekeles létrehozása",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/ertekeles",
+            "description": "Elvárt HTTP státusz: 201.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diak_id\": {{diakId}},\n  \"pontszam\": 5,\n  \"velemeny\": \"Érthető magyarázat\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "tanar létrehozása",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tanar",
+            "description": "Elvárt HTTP státusz: 201.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ertekeles_id\": {{ertekelesId}},\n  \"nev\": \"Teszt Tanár\",\n  \"email\": \"teszt.tanar@example.hu\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "idopont létrehozása",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/idopont",
+            "description": "Elvárt HTTP státusz: 201.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tanar_id\": {{tanarId}},\n  \"diak_id\": {{diakId}},\n  \"kezdete\": \"14:00\",\n  \"vege\": \"15:00\",\n  \"datum\": \"2026-10-29\",\n  \"tipus\": \"online\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 Lekérdezések",
+      "item": [
+        {
+          "name": "diak lista",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/diak",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "diak egy rekord",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/diak/{{diakId}}",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "ertekeles lista",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/ertekeles",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "ertekeles egy rekord",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/ertekeles/{{ertekelesId}}",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "tanar lista",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tanar",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "tanar egy rekord",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/tanar/{{tanarId}}",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "idopont lista",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/idopont",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        },
+        {
+          "name": "idopont egy rekord",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/idopont/{{idopontId}}",
+            "description": "Elvárt HTTP státusz: 200."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 Módosítás teljes rekorddal",
+      "item": [
+        {
+          "name": "diak módosítása",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/diak/{{diakId}}",
+            "description": "Elvárt HTTP státusz: 200.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nev\": \"Teszt Diák Módosított\",\n  \"email\": \"teszt.diak@example.hu\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ertekeles módosítása",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/ertekeles/{{ertekelesId}}",
+            "description": "Elvárt HTTP státusz: 200.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diak_id\": {{diakId}},\n  \"pontszam\": 4,\n  \"velemeny\": \"Érthető magyarázat\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "tanar módosítása",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/tanar/{{tanarId}}",
+            "description": "Elvárt HTTP státusz: 200.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ertekeles_id\": {{ertekelesId}},\n  \"nev\": \"Teszt Tanár Módosított\",\n  \"email\": \"teszt.tanar@example.hu\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "idopont módosítása",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/idopont/{{idopontId}}",
+            "description": "Elvárt HTTP státusz: 200.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tanar_id\": {{tanarId}},\n  \"diak_id\": {{diakId}},\n  \"kezdete\": \"14:00\",\n  \"vege\": \"15:30\",\n  \"datum\": \"2026-10-29\",\n  \"tipus\": \"online\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "05 Hibakezelés",
+      "item": [
+        {
+          "name": "Érvénytelen azonosító",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/diak/0",
+            "description": "Elvárt HTTP státusz: 400."
+          },
+          "response": []
+        },
+        {
+          "name": "Hibás email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/diak",
+            "description": "Elvárt HTTP státusz: 400.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nev\": \"Hibás Diák\",\n  \"email\": \"hibas\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hibás pontszám",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/ertekeles",
+            "description": "Elvárt HTTP státusz: 400.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"diak_id\": {{diakId}},\n  \"pontszam\": 6,\n  \"velemeny\": \"Érthető magyarázat\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hibás naptári dátum",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/idopont",
+            "description": "Elvárt HTTP státusz: 400.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tanar_id\": {{tanarId}},\n  \"diak_id\": {{diakId}},\n  \"kezdete\": \"14:00\",\n  \"vege\": \"15:00\",\n  \"datum\": \"2026-02-30\",\n  \"tipus\": \"online\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hibás időtartam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/idopont",
+            "description": "Elvárt HTTP státusz: 400.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tanar_id\": {{tanarId}},\n  \"diak_id\": {{diakId}},\n  \"kezdete\": \"14:00\",\n  \"vege\": \"13:00\",\n  \"datum\": \"2026-10-29\",\n  \"tipus\": \"online\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hivatkozott diák nem törölhető",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/diak/{{diakId}}",
+            "description": "Elvárt HTTP státusz: 409."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "06 Saját tesztrekordok törlése kapcsolati sorrendben",
+      "item": [
+        {
+          "name": "idopont törlése",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/idopont/{{idopontId}}",
+            "description": "Elvárt HTTP státusz: 204."
+          },
+          "response": []
+        },
+        {
+          "name": "tanar törlése",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/tanar/{{tanarId}}",
+            "description": "Elvárt HTTP státusz: 204."
+          },
+          "response": []
+        },
+        {
+          "name": "ertekeles törlése",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/ertekeles/{{ertekelesId}}",
+            "description": "Elvárt HTTP státusz: 204."
+          },
+          "response": []
+        },
+        {
+          "name": "diak törlése",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/diak/{{diakId}}",
+            "description": "Elvárt HTTP státusz: 204."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
