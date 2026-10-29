@@ -41,7 +41,8 @@ app.get('/api/diak', async (req, res) => {
 });
 
 app.get('/api/diak/:id', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM diak WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [sorok] = await db.query('SELECT * FROM diak WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.json({ data: sorok[0] });
 });
@@ -51,7 +52,7 @@ app.post('/api/diak', async (req, res) => {
     if (!(joSzoveg(nev) && joEmail(email))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [eredmeny] = await db.execute(
+    const [eredmeny] = await db.query(
         'INSERT INTO diak (nev, email) VALUES (?, ?)',
         [nev, email]
     );
@@ -59,32 +60,35 @@ app.post('/api/diak', async (req, res) => {
 });
 
 app.put('/api/diak/:id', async (req, res) => {
+    const {id}=req.params;
     const { nev, email } = req.body || {};
     if (!(joSzoveg(nev) && joEmail(email))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [sorok] = await db.execute('SELECT id FROM diak WHERE id = ?', [req.params.id]);
+    const [sorok] = await db.query('SELECT id FROM diak WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
-    await db.execute(
+    await db.query(
         'UPDATE diak SET nev = ?, email = ? WHERE id = ?',
-        [nev, email, req.params.id]
+        [nev, email, id]
     );
-    res.json({ data: { id: Number(req.params.id), nev, email } });
+    res.json({ data: { id: Number(id), nev, email } });
 });
 
 app.delete('/api/diak/:id', async (req, res) => {
-    const [eredmeny] = await db.execute('DELETE FROM diak WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [eredmeny] = await db.query('DELETE FROM diak WHERE id = ?', [id]);
     if (eredmeny.affectedRows === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.status(204).end();
 });
 
 app.get('/api/ertekeles', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM ertekeles ORDER BY id');
+    const [sorok] = await db.query('SELECT * FROM ertekeles ORDER BY id');
     res.json({ data: sorok });
 });
 
 app.get('/api/ertekeles/:id', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM ertekeles WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [sorok] = await db.query('SELECT * FROM ertekeles WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.json({ data: sorok[0] });
 });
@@ -94,7 +98,7 @@ app.post('/api/ertekeles', async (req, res) => {
     if (!(joId(diak_id) && Number.isInteger(pontszam) && pontszam >= 1 && pontszam <= 5 && joSzoveg(velemeny))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [eredmeny] = await db.execute(
+    const [eredmeny] = await db.query(
         'INSERT INTO ertekeles (diak_id, pontszam, velemeny) VALUES (?, ?, ?)',
         [diak_id, pontszam, velemeny]
     );
@@ -102,32 +106,35 @@ app.post('/api/ertekeles', async (req, res) => {
 });
 
 app.put('/api/ertekeles/:id', async (req, res) => {
+    const {id}=req.params;
     const { diak_id, pontszam, velemeny } = req.body || {};
     if (!(joId(diak_id) && Number.isInteger(pontszam) && pontszam >= 1 && pontszam <= 5 && joSzoveg(velemeny))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [sorok] = await db.execute('SELECT id FROM ertekeles WHERE id = ?', [req.params.id]);
+    const [sorok] = await db.query('SELECT id FROM ertekeles WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
-    await db.execute(
+    await db.query(
         'UPDATE ertekeles SET diak_id = ?, pontszam = ?, velemeny = ? WHERE id = ?',
-        [diak_id, pontszam, velemeny, req.params.id]
+        [diak_id, pontszam, velemeny, id]
     );
-    res.json({ data: { id: Number(req.params.id), diak_id, pontszam, velemeny } });
+    res.json({ data: { id: Number(id), diak_id, pontszam, velemeny } });
 });
 
 app.delete('/api/ertekeles/:id', async (req, res) => {
-    const [eredmeny] = await db.execute('DELETE FROM ertekeles WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [eredmeny] = await db.query('DELETE FROM ertekeles WHERE id = ?', [id]);
     if (eredmeny.affectedRows === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.status(204).end();
 });
 
 app.get('/api/tanar', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM tanar ORDER BY id');
+    const [sorok] = await db.query('SELECT * FROM tanar ORDER BY id');
     res.json({ data: sorok });
 });
 
 app.get('/api/tanar/:id', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM tanar WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [sorok] = await db.query('SELECT * FROM tanar WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.json({ data: sorok[0] });
 });
@@ -137,7 +144,7 @@ app.post('/api/tanar', async (req, res) => {
     if (!(joId(ertekeles_id) && joSzoveg(nev) && joEmail(email))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [eredmeny] = await db.execute(
+    const [eredmeny] = await db.query(
         'INSERT INTO tanar (ertekeles_id, nev, email) VALUES (?, ?, ?)',
         [ertekeles_id, nev, email]
     );
@@ -145,32 +152,35 @@ app.post('/api/tanar', async (req, res) => {
 });
 
 app.put('/api/tanar/:id', async (req, res) => {
+    const {id}=req.params;
     const { ertekeles_id, nev, email } = req.body || {};
     if (!(joId(ertekeles_id) && joSzoveg(nev) && joEmail(email))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [sorok] = await db.execute('SELECT id FROM tanar WHERE id = ?', [req.params.id]);
+    const [sorok] = await db.query('SELECT id FROM tanar WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
-    await db.execute(
+    await db.query(
         'UPDATE tanar SET ertekeles_id = ?, nev = ?, email = ? WHERE id = ?',
-        [ertekeles_id, nev, email, req.params.id]
+        [ertekeles_id, nev, email, id]
     );
-    res.json({ data: { id: Number(req.params.id), ertekeles_id, nev, email } });
+    res.json({ data: { id: Number(id), ertekeles_id, nev, email } });
 });
 
 app.delete('/api/tanar/:id', async (req, res) => {
-    const [eredmeny] = await db.execute('DELETE FROM tanar WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [eredmeny] = await db.query('DELETE FROM tanar WHERE id = ?', [id]);
     if (eredmeny.affectedRows === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.status(204).end();
 });
 
 app.get('/api/idopont', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM idopont ORDER BY id');
+    const [sorok] = await db.query('SELECT * FROM idopont ORDER BY id');
     res.json({ data: sorok });
 });
 
 app.get('/api/idopont/:id', async (req, res) => {
-    const [sorok] = await db.execute('SELECT * FROM idopont WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [sorok] = await db.query('SELECT * FROM idopont WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.json({ data: sorok[0] });
 });
@@ -180,7 +190,7 @@ app.post('/api/idopont', async (req, res) => {
     if (!(joId(tanar_id) && joId(diak_id) && joIdo(kezdete) && joIdo(vege) && kezdete < vege && joDatum(datum) && ['online', 'jelenléti', 'feladatmegoldás'].includes(tipus))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [eredmeny] = await db.execute(
+    const [eredmeny] = await db.query(
         'INSERT INTO idopont (tanar_id, diak_id, kezdete, vege, datum, tipus) VALUES (?, ?, ?, ?, ?, ?)',
         [tanar_id, diak_id, kezdete, vege, datum, tipus]
     );
@@ -188,21 +198,23 @@ app.post('/api/idopont', async (req, res) => {
 });
 
 app.put('/api/idopont/:id', async (req, res) => {
+    const {id}=req.params;
     const { tanar_id, diak_id, kezdete, vege, datum, tipus } = req.body || {};
     if (!(joId(tanar_id) && joId(diak_id) && joIdo(kezdete) && joIdo(vege) && kezdete < vege && joDatum(datum) && ['online', 'jelenléti', 'feladatmegoldás'].includes(tipus))) {
         return res.status(400).json({ error: 'Hiányzó vagy hibás adat.' });
     }
-    const [sorok] = await db.execute('SELECT id FROM idopont WHERE id = ?', [req.params.id]);
+    const [sorok] = await db.query('SELECT id FROM idopont WHERE id = ?', [id]);
     if (sorok.length === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
-    await db.execute(
+    await db.query(
         'UPDATE idopont SET tanar_id = ?, diak_id = ?, kezdete = ?, vege = ?, datum = ?, tipus = ? WHERE id = ?',
-        [tanar_id, diak_id, kezdete, vege, datum, tipus, req.params.id]
+        [tanar_id, diak_id, kezdete, vege, datum, tipus, id]
     );
-    res.json({ data: { id: Number(req.params.id), tanar_id, diak_id, kezdete, vege, datum, tipus } });
+    res.json({ data: { id: Number(id), tanar_id, diak_id, kezdete, vege, datum, tipus } });
 });
 
 app.delete('/api/idopont/:id', async (req, res) => {
-    const [eredmeny] = await db.execute('DELETE FROM idopont WHERE id = ?', [req.params.id]);
+    const {id}=req.params;
+    const [eredmeny] = await db.query('DELETE FROM idopont WHERE id = ?', [id]);
     if (eredmeny.affectedRows === 0) return res.status(404).json({ error: 'Nincs ilyen rekord.' });
     res.status(204).end();
 });
