@@ -1,0 +1,19 @@
+a{
+    margin-left: 400px;
+}
+
+.link{
+    margin-right: -200px;
+}
+
+button{
+    margin-left: 450px;
+    margin-right: -200;
+    background-color: yellowgreen;
+    width: 130px;
+    height: 40px;
+}
+
+h3, h1{
+    text-align: center;
+}
