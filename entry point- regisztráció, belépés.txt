@@ -1,0 +1,7 @@
+entry point- regisztráció, belépés
+főoldal - menürendszer (router point) + információ
+adatok lekérése (get)
++statikus adatok
+node
+
+11. 27.
