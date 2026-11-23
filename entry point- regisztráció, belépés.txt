@@ -4,4 +4,4 @@ adatok lekérése (get)
 +statikus adatok
 node
 
-11. 27.
+12. 04.
