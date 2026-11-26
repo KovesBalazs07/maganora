@@ -16,3 +16,13 @@ nav, .nav-link{
     color: rgb(13, 13, 13);
     background-color: rgb(22, 147, 169);
 }
+
+button{
+    background-color: yellowgreen;
+    width: 300px;
+    height: 40px;
+}
+
+.adat{
+    font-weight: bolder;
+}
