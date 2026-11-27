@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,4 +7,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './bejelentkezes.css',
   templateUrl: './bejelentkezes.html',
 })
-export class Bejelentkezes {}
+export class Bejelentkezes {
+  protected readonly title=signal('Projekt');
+  protected readonly username=signal('Felhasználónév');
+  protected readonly email=signal('E-mail-cím');
+  protected readonly password=signal('Jelszó');
+  protected readonly login=signal('Bejelentkezés');
+  protected readonly forgot=signal('Elfelejtett jelszó?');
+}

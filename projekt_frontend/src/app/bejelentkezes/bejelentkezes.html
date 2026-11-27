@@ -29,26 +29,31 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h4 id="p">Projekt</h4>
+            <h4 id="p">{{title()}}</h4>
         </div>
     </div>
+    <hr>
     <br>
     <br>
     <div class="row">
-        <div class="col-xl-4 ">
-            <label for="felhasznalonev" class="adat">Felhasználónév/E-mail-cím</label>
+        <div class="col-xl-4 col-md-12 center">
+            <label for="felhasznalonev" class="adat">{{username()}}/{{email()}}</label>
             <br>
             <input type="text" id="felhasznalonev">
         </div>
-        <div class="col-xl-4 ">
-            <label for="jelszo" class="adat">Jelszó:</label>
+        <br>
+        <div class="col-xl-4 col-md-12 center">
+            <label for="jelszo" class="adat">{{password()}}</label>
             <br>
             <input type="text" id="jelszo">
-        </div>
-        <div class="col-xl-4 ">
             <br>
-            <button>Bejelentkezés</button>
+            <a id="felejt"><u>{{forgot()}}</u></a>
+        </div>
+        <br>
+        <div class="col-xl-4 col-md-12 center">
+            <br>
+            <button class="log">{{login()}}</button>
         </div>
     </div>
-    
+
 </div>

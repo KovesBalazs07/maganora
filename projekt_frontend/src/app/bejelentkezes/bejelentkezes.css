@@ -1,10 +1,12 @@
 #p{
     text-align: center;
+    font-size:xx-large;
+    font-weight: bold;
 }
 
 #bod{
     background-color: rgb(8, 181, 181);
-    height: 1000px;
+    height: 720px;
 }
 
 nav{
@@ -21,8 +23,23 @@ button{
     background-color: yellowgreen;
     width: 300px;
     height: 40px;
+    border-style: solid;
 }
 
 .adat{
     font-weight: bolder;
+}
+
+.log{
+    font-weight: bolder;
+}
+
+.center{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#felejt{
+    text-align: center;
+    font-style: italic;
 }
