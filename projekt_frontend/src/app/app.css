@@ -1,20 +1,135 @@
-button{
-    background-color: yellowgreen;
-    width: 300px;
-    height: 40px;
+:host {
+  display: block;
 }
-
-h3, h1, h2 {
-    text-align: center;
+.site-header {
+  background: #fff;
 }
-
-
-nav{
-    width: 800px;
+.navigation {
+  max-width: 1440px;
+  height: 84px;
+  margin: auto;
+  padding: 0 clamp(24px, 5vw, 76px);
+  display: flex;
+  align-items: center;
+  gap: 45px;
 }
-
-nav, .nav-link{
-    font-weight: bolder;
-    color: rgb(13, 13, 13);
-    background-color: rgb(22, 147, 169);
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #273c2b;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 800;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+}
+.brand:hover {
+  color: #273c2b;
+}
+.desktop-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex: 1;
+}
+.navigation-links,
+.navigation-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.navigation-links a,
+.navigation-actions a {
+  color: #526052;
+  font-size: 0.83rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.navigation a:hover,
+.navigation a.active {
+  color: #71976c;
+}
+.navigation-actions .nav-register {
+  padding: 12px 17px;
+  border-radius: 4px;
+  color: white;
+  background: #263c2b;
+  border: 0;
+  font-size: .83rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.navigation-actions .nav-register:hover {
+  color: white;
+  background: #405c40;
+}
+.nav-profile {
+  border-left: 1px solid #dfe5dc;
+  padding-left: 20px;
+}
+.mobile-navigation {
+  display: none;
+  position: relative;
+  margin-left: auto;
+}
+.mobile-navigation summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px;
+}
+.mobile-navigation summary::-webkit-details-marker {
+  display: none;
+}
+.mobile-navigation summary span {
+  display: block;
+  background: #263c2b;
+  width: 23px;
+  height: 2px;
+  margin: 5px 0;
+}
+.mobile-links {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  z-index: 10;
+  background: white;
+  box-shadow: 0 12px 35px #263c2b25;
+  min-width: 230px;
+  padding: 12px;
+  display: grid;
+}
+.mobile-links a {
+  padding: 10px 12px;
+  color: #263c2b;
+  text-decoration: none;
+  font-weight: 600;
+}
+.mobile-links a:hover {
+  background: #eef4ea;
+}
+.mobile-links button {
+  border: 0;
+  background: transparent;
+  padding: 10px 12px;
+  text-align: left;
+  color: #263c2b;
+  font-weight: 600;
+}
+.auth-error {
+  color: #a11c22;
+  padding: 0 24px;
+}
+@media (max-width: 1100px) {
+  .desktop-navigation {
+    display: none;
+  }
+  .mobile-navigation {
+    display: block;
+  }
+  .navigation {
+    height: 72px;
+  }
 }

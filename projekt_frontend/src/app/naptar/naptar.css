@@ -1,25 +1,63 @@
-#bod{
-    background-color: rgb(8, 181, 181);
-    height: 720px;
+.naptar-oldal {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-nav{
-    width: 800px;
+.naptar {
+  margin-top: 20px;
 }
 
-nav, .nav-link{
-    font-weight: bolder;
-    color: rgb(13, 13, 13);
-    background-color: rgb(22, 147, 169);
+.honap-fejlec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.datumtarolas{
-    background-color: rgb(219, 233, 233);
-    width: 540px;
-    height: 200px;
+.honap-fejlec h2 {
+  margin: 0;
+  font-size: 1.25rem;
 }
 
-#datum{
-    text-align: center;
-    font-weight: bold;
+.honap-fejlec button {
+  padding: 4px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.napok {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.napnev, .nap {
+  padding: 10px 2px;
+}
+
+.napnev {
+  color: #59645b;
+  font-weight: 600;
+}
+
+.nap {
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nap:hover {
+  background: #f0f3ef;
+}
+
+.ma {
+  background: #e4ece3;
+  font-weight: 600;
+}
+
+.kivalasztott {
+  border-color: #456e4a;
 }

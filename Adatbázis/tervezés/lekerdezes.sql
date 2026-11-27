@@ -50,10 +50,10 @@ SELECT * FROM idopont
 WHERE tipus='online';
 
 SELECT * FROM idopont
-WHERE datum='2026-09-29'
+WHERE datum='2026-09-29';
 
 SELECT COUNT(*) AS foglalasszam FROM idopont;
 
-SELECT (idopont.datum,tanar.nev,diak.nev) FROM idopont
+SELECT idopont.datum, tanar.nev AS tanar_nev, diak.nev AS diak_nev FROM idopont
 INNER JOIN diak ON idopont.diak_id=diak.id
-INNER JOIN tanar ON idopont.tanar_id=tanar.id
+INNER JOIN tanar ON idopont.tanar_id=tanar.id;

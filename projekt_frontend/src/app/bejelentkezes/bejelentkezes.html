@@ -1,59 +1,20 @@
-<head>    
-    <meta charset="utf-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-    <title>Projekt</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-</head>
-<body id="bod">
-    <header>
-    <nav class="container navbar navbar-expand-lg navbar-light ">
-        <div class="container-fluid">
-        <h2>Projekt</h2>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" routerLink="/fooldal">Főoldal</a></li>
-                <li class="nav-item"><a class="nav-link active" routerLink="/bejelentkezes">Bejelentkezés</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/regisztracio">Regisztráció</a></li>                
-                <li class="nav-item"><a class="nav-link" routerLink="/naptar">Naptár</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/profil">Profil</a></li> 
-                </ul>
-        </div>
-        </div>
-    </nav>
-    </header>
-<br>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h4 id="p">{{title()}}</h4>
-        </div>
-    </div>
-    <hr>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-xl-4 col-md-12 center">
-            <label for="felhasznalonev" class="adat">{{username()}}/{{email()}}</label>
-            <br>
-            <input type="text" id="felhasznalonev">
-        </div>
-        <br>
-        <div class="col-xl-4 col-md-12 center">
-            <label for="jelszo" class="adat">{{password()}}</label>
-            <br>
-            <input type="text" id="jelszo">
-            <br>
-            <a id="felejt"><u>{{forgot()}}</u></a>
-        </div>
-        <br>
-        <div class="col-xl-4 col-md-12 center">
-            <br>
-            <button class="log">{{login()}}</button>
-        </div>
-    </div>
+<main class="fiok-panel">
+  <h1>Bejelentkezés</h1>
+  <form [formGroup]="urlap" (ngSubmit)="belepes()">
+    <label for="belepes-email">E-mail-cím</label>
+    <input id="belepes-email" type="email" formControlName="email" autocomplete="username"
+           required maxlength="100">
 
-</div>
+    <label for="belepes-jelszo">Jelszó</label>
+    <input id="belepes-jelszo" type="password" formControlName="jelszo"
+           autocomplete="current-password" required minlength="8" maxlength="128">
+
+    @if (hiba()) {
+      <p role="alert">{{ hiba() }}</p>
+    }
+    <button type="submit" [disabled]="kuldes()">
+      {{ kuldes() ? 'Bejelentkezés folyamatban…' : 'Bejelentkezés' }}
+    </button>
+  </form>
+  <p>Még nincs fiókod? <a routerLink="/regisztracio">Regisztrálj</a></p>
+</main>

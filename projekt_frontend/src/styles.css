@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+.fiok-panel {
+  box-sizing: border-box;
+  inline-size: min(100%, 32rem);
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.fiok-panel form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fiok-panel label {
+  font-weight: 600;
+}
+
+.fiok-panel input,
+.fiok-panel select,
+.fiok-panel button {
+  border: 1px solid #4a6e72;
+  border-radius: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fiok-panel button {
+  margin-block-start: 0.75rem;
+  background-color: #106c72;
+  color: white;
+}
+
+.fiok-panel button:disabled {
+  opacity: 0.7;
+}
+
+.fiok-panel [role="alert"] {
+  color: #a11c22;
+}
+
+.fiok-panel dd {
+  margin: 0 0 0.75rem;
+}
+
+.tobbvalaszto {
+  border: 1px solid #4a6e72;
+  border-radius: 0.375rem;
+}
+
+.tobbvalaszto summary {
+  padding: 0.625rem 0.75rem;
+  cursor: pointer;
+}
+
+.tobbvalaszto > div {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid #d5e2e0;
+}
+
+.tobbvalaszto label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+}
+
+.fiok-panel .tobbvalaszto input {
+  width: auto;
+}

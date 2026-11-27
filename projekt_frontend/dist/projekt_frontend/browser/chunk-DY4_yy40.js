@@ -1,0 +1,1 @@
+import{T as R,et as p,o as Br,ot as ve}from"./main-LICM55FD.js";function w(t){t||(t=p(ve));let i=new R(e=>{if(t.destroyed){e.next();return}return t.onDestroy(e.next.bind(e))});return e=>e.pipe(Br(i))}export{w as t};

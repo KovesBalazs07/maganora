@@ -1,1 +1,65 @@
-<p>regisztracio works!</p>
+<main class="fiok-panel">
+  <h1>Regisztráció</h1>
+  <form [formGroup]="urlap" (ngSubmit)="regisztral()">
+    <label for="regisztracio-email">E-mail-cím</label>
+    <input id="regisztracio-email" type="email" formControlName="email" autocomplete="username"
+           required maxlength="100">
+
+    <label for="regisztracio-nev">Felhasználónév</label>
+    <input id="regisztracio-nev" formControlName="nev" autocomplete="name" required maxlength="100">
+
+    <label for="regisztracio-jelszo">Jelszó</label>
+    <input id="regisztracio-jelszo" type="password" formControlName="jelszo"
+           autocomplete="new-password" required minlength="8" maxlength="128"
+           aria-describedby="jelszo-utmutato">
+    <small id="jelszo-utmutato">8–128 karakter.</small>
+
+    <label for="szerepkor">Hogyan szeretnél regisztrálni?</label>
+    <select id="szerepkor" formControlName="szerepkor" required>
+      <option value="">Válassz szerepkört</option>
+      <option value="diak">Diákként</option>
+      <option value="tanar">Tanárként</option>
+    </select>
+
+    @if (urlap.controls.szerepkor.value) {
+      <label id="tantargyak-cim">{{ urlap.controls.szerepkor.value === 'diak' ? 'Mit szeretnél tanulni?' : 'Mit szeretnél oktatni?' }}</label>
+      <details class="tobbvalaszto">
+        <summary aria-labelledby="tantargyak-cim tantargyak-valasztas" id="tantargyak-valasztas">Tantárgyak kiválasztása ({{ urlap.controls.tantargy.value.length }})</summary>
+        <div>
+          @for (opcio of tantargyak; track opcio[0]) {
+            <label><input type="checkbox" [checked]="urlap.controls.tantargy.value.includes(opcio[0])" (change)="valasztas('tantargy', opcio[0], $any($event.target).checked)"> {{ opcio[1] }}</label>
+          }
+        </div>
+      </details>
+      @if (urlap.controls.szerepkor.value === 'diak') {
+        <label id="celok-cim">Mire szeretnél felkészülni?</label>
+        <details class="tobbvalaszto">
+          <summary aria-labelledby="celok-cim celok-valasztas" id="celok-valasztas">Tanulási célok kiválasztása ({{ urlap.controls.tanulasi_cel.value.length }})</summary>
+          <div>
+            @for (opcio of celok; track opcio[0]) {
+              <label><input type="checkbox" [checked]="urlap.controls.tanulasi_cel.value.includes(opcio[0])" (change)="valasztas('tanulasi_cel', opcio[0], $any($event.target).checked)"> {{ opcio[1] }}</label>
+            }
+          </div>
+        </details>
+      } @else {
+        <label id="vegzettsegek-cim">Milyen végzettségeid vannak?</label>
+        <details class="tobbvalaszto">
+          <summary aria-labelledby="vegzettsegek-cim vegzettsegek-valasztas" id="vegzettsegek-valasztas">Végzettségek kiválasztása ({{ urlap.controls.vegzettseg.value.length }})</summary>
+          <div>
+            @for (opcio of vegzettsegek; track opcio[0]) {
+              <label><input type="checkbox" [checked]="urlap.controls.vegzettseg.value.includes(opcio[0])" (change)="valasztas('vegzettseg', opcio[0], $any($event.target).checked)"> {{ opcio[1] }}</label>
+            }
+          </div>
+        </details>
+      }
+    }
+
+    @if (hiba()) {
+      <p role="alert">{{ hiba() }}</p>
+    }
+    <button type="submit" [disabled]="kuldes()">
+      {{ kuldes() ? 'Regisztráció folyamatban…' : 'Regisztráció' }}
+    </button>
+  </form>
+  <p>Van már fiókod? <a routerLink="/bejelentkezes">Jelentkezz be</a></p>
+</main>

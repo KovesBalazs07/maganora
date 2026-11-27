@@ -1,1 +1,55 @@
+<header class="site-header">
+  <nav class="navigation" aria-label="Fő navigáció">
+    <a class="brand" routerLink="/fooldal" aria-label="Magánóra főoldal">
+      <span>Magánóra</span>
+    </a>
+    <div class="desktop-navigation">
+      <div class="navigation-links">
+        <a routerLink="/fooldal" routerLinkActive="active">Főoldal</a>
+        <a routerLink="/fooldal" fragment="hogyan-mukodik">Hogyan működik?</a>
+        <a routerLink="/fooldal" fragment="tanulas">Amiben segítünk</a>
+        <a routerLink="/tanarok" routerLinkActive="active">Tanárok</a>
+        <a routerLink="/naptar" routerLinkActive="active">Naptár</a>
+      </div>
+      <div class="navigation-actions">
+        @if (!betoltes()) {
+          @if (fiok.fiok()) {
+            <a class="nav-profile" routerLink="/profil">Profil</a>
+            <button class="nav-register" type="button" (click)="kijelentkezes()" [disabled]="kijelentkezesFolyamatban()">Kijelentkezés</button>
+          } @else {
+            <a routerLink="/bejelentkezes">Bejelentkezés</a>
+            <a class="nav-register" routerLink="/regisztracio">Regisztráció</a>
+          }
+        }
+      </div>
+    </div>
+    <details class="mobile-navigation">
+      <summary aria-label="Menü megnyitása">
+        <span></span><span></span><span></span>
+      </summary>
+      <div
+        class="mobile-links"
+        (click)="$any($event.currentTarget).parentElement.removeAttribute('open')"
+      >
+        <a routerLink="/fooldal">Főoldal</a>
+        <a routerLink="/fooldal" fragment="hogyan-mukodik">Hogyan működik?</a>
+        <a routerLink="/fooldal" fragment="tanulas">Amiben segítünk</a>
+        <a routerLink="/tanarok">Tanárok</a>
+        <a routerLink="/naptar">Naptár</a>
+        @if (!betoltes()) {
+          @if (fiok.fiok()) {
+            <a routerLink="/profil">Profil</a>
+            <button type="button" (click)="kijelentkezes()" [disabled]="kijelentkezesFolyamatban()">Kijelentkezés</button>
+          } @else {
+            <a routerLink="/bejelentkezes">Bejelentkezés</a>
+            <a routerLink="/regisztracio">Regisztráció</a>
+          }
+        }
+      </div>
+    </details>
+  </nav>
+</header>
+@if (hiba()) {
+  <p class="auth-error" role="alert">{{ hiba() }}</p>
+}
 <router-outlet></router-outlet>

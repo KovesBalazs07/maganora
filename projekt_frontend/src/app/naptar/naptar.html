@@ -1,47 +1,26 @@
-<head>    
-    <meta charset="utf-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-    <title>Projekt</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-</head>
-<body id="bod">
-    <header>
-    <nav class="container navbar navbar-expand-lg navbar-light ">
-        <div class="container-fluid">
-        <h2>Projekt</h2>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" routerLink="/fooldal">Főoldal</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/bejelentkezes">Bejelentkezés</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/regisztracio">Regisztráció</a></li>                
-                <li class="nav-item"><a class="nav-link active" routerLink="/naptar">Naptár</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/profil">Profil</a></li>    
-                </ul>
-        </div>
-        </div>
-    </nav>
-    </header>
-    <br>
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6">
-            <p id="datum">{{foglalhato()}}</p>
-            </div>
-            <div class="col-xl-6">
-                <p id="datum">{{foglalt()}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-6">
-                <div class="datumtarolas"></div>
-            </div>
-            <div class="col-xl-6">
-                <div class="datumtarolas"></div>
-            </div>
-        </div>
+<main class="naptar-oldal">
+  <h1>Naptár</h1>
+  <section class="naptar" aria-label="Havi naptár">
+    <div class="honap-fejlec">
+      <button type="button" (click)="honapotValt(-1)" aria-label="Előző hónap">‹</button>
+      <h2 aria-live="polite">{{ honapNeve() }}</h2>
+      <button type="button" (click)="honapotValt(1)" aria-label="Következő hónap">›</button>
     </div>
-</body>
+    <div class="napok" [attr.aria-label]="honapNeve()">
+      @for (napnev of napnevek; track napnev) {
+        <span class="napnev">{{ napnev }}</span>
+      }
+      @for (nap of napok(); track $index) {
+        @if (nap !== null) {
+          <button type="button" class="nap" [class.ma]="maiNap(nap)"
+                  [class.kivalasztott]="kivalasztottNap(nap)"
+                  [attr.aria-current]="maiNap(nap) ? 'date' : null"
+                  [attr.aria-pressed]="kivalasztottNap(nap)"
+                  (click)="napotValaszt(nap)">{{ nap }}</button>
+        } @else {
+          <span aria-hidden="true"></span>
+        }
+      }
+    </div>
+  </section>
+</main>

@@ -1,9 +1,11 @@
 require('dotenv').config({ quiet: true });
 const express = require('express');
 const db = require('./db');
+const auth = require('./auth');
 
 const app = express();
 app.use(express.json());
+app.use('/api/auth', auth);
 
 function joSzoveg(ertek) {
     return typeof ertek === 'string' && ertek.trim().length > 0 && ertek.length <= 100;

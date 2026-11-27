@@ -18,4 +18,29 @@ describe('Naptar', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('allows moving between months', async () => {
+    const page: HTMLElement = fixture.nativeElement;
+    const eredeti = page.querySelector('h2')?.textContent;
+    page.querySelector<HTMLButtonElement>('[aria-label="Következő hónap"]')!.click();
+    await fixture.whenStable();
+    expect(page.querySelector('h2')?.textContent).not.toBe(eredeti);
+    page.querySelector<HTMLButtonElement>('[aria-label="Előző hónap"]')!.click();
+    await fixture.whenStable();
+    expect(page.querySelector('h2')?.textContent).toBe(eredeti);
+  });
+
+  it('selects a day and keeps the selection when navigating between months', async () => {
+    const page: HTMLElement = fixture.nativeElement;
+    const day = page.querySelector<HTMLButtonElement>('button.nap')!;
+    day.click();
+    await fixture.whenStable();
+    expect(day.getAttribute('aria-pressed')).toBe('true');
+    page.querySelector<HTMLButtonElement>('[aria-label="Következő hónap"]')!.click();
+    await fixture.whenStable();
+    expect(page.querySelector('button.nap[aria-pressed="true"]')).toBeNull();
+    page.querySelector<HTMLButtonElement>('[aria-label="Előző hónap"]')!.click();
+    await fixture.whenStable();
+    expect(page.querySelector('button.nap[aria-pressed="true"]')).toBeTruthy();
+  });
 });

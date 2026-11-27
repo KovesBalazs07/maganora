@@ -1,1 +1,23 @@
-<p>profil works!</p>
+<main class="fiok-panel">
+  <h1>Profil</h1>
+  @if (betoltes()) {
+    <p role="status">Profil betöltése…</p>
+  }
+  @if (profil(); as fiok) {
+    <dl>
+      <dt>Név</dt>
+      <dd>{{ fiok.nev }}</dd>
+      <dt>E-mail-cím</dt>
+      <dd>{{ fiok.email }}</dd>
+    </dl>
+    <button type="button" (click)="kijelentkezes()" [disabled]="kijelentkezesFolyamatban()">
+      Kijelentkezés
+    </button>
+  }
+  @if (hiba()) {
+    <p role="alert">{{ hiba() }}</p>
+  }
+  @if (bejelentkezesSzukseges()) {
+    <a routerLink="/bejelentkezes">Bejelentkezés</a>
+  }
+</main>

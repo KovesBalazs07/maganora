@@ -1,5 +1,6 @@
-import { Component,signal, computed } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FiokService } from '../fiok.service';
 
 @Component({
   imports: [RouterLink],
@@ -8,6 +9,5 @@ import { RouterLink } from '@angular/router';
   templateUrl: './fooldal.html',
 })
 export class Fooldal {
-  protected readonly login=signal('Bejelentkezés');
-  protected readonly registration=signal('Regisztráció');
+  protected readonly fiok = inject(FiokService);
 }

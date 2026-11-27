@@ -1,59 +1,20 @@
 # ProjektFrontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+## Regisztráció és bejelentkezés helyi futtatása
 
-## Development server
+1. Új adatbázisnál importáld a `Backend/database/setup.sql` fájlt MySQL-be. Ezután új és meglévő `maganora` adatbázisnál is importáld sorrendben a `Backend/database/fiokok.sql`, `Backend/database/lekerdezesek.sql` és `Backend/database/regisztracios_adatok.sql` fájlokat.
+2. A `Backend/Szerver-side` mappában futtasd az `npm ci`, majd az `npm start` parancsot. Ha eltérnek a helyi adatbázis-beállításaid, add meg a `DB_HOST`, `DB_PORT`, `DB_USER` és `DB_PASSWORD` értékét környezeti változóként vagy a backend mappájában lévő `.env` fájlban.
+3. A `projekt_frontend` mappában futtasd az `npm ci`, majd az `npm start` parancsot. Nyisd meg a [helyi felületet](http://localhost:4200/). Ha a backend nem a 3000-es porton fut, állítsd át a célt a `proxy.conf.json` fájlban.
 
-To start a local development server, run:
+Regisztrációkor add meg a nevedet, e-mail-címedet és jelszavadat, majd válaszd ki a szerepkörödet és a hozzá tartozó adatokat. A sikeres regisztráció után automatikusan bejelentkezel. A diákfiókhoz új diákrekord tartozik. A korábbi fiókokat és diákrekordokat csak ellenőrzés után, a `fiok_diak` táblában lehet összekapcsolni.
 
-```bash
-ng serve
-```
+## GET-végpontok
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Az alábbi végpontok bejelentkezést igényelnek és a böngésző munkamenetét használják:
 
-## Code scaffolding
+- `GET /api/auth/profil` — az aktuális fiók adatai.
+- `GET /api/auth/szabad-idopontok?tol=2026-11-01&ig=2026-11-30` — szabad időpontok, opcionális, mindkét végét beleértő dátumszűréssel.
+- `GET /api/auth/sajat-idopontok?tol=2026-11-01&ig=2026-11-30` — az aktuális fiókhoz kapcsolt diák időpontjai, opcionális dátumszűréssel.
+- `GET /api/auth/havi-osszesites?honap=2026-11` — az adott hónapban szereplő időpontok száma és összesített hossza percekben. Az összeg `null`, mert az adatbázis nem tárol díjakat.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Az időpont diák nélküli (`diak_id IS NULL`) állapotban szabad. A régebbi fiókokhoz kapcsolás nélkül a saját lista üres. A meglévő általános adatvégpontok az `/api/diak`, `/api/tanar`, `/api/ertekeles` és `/api/idopont` útvonalakon érhetők el.
