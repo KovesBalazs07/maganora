@@ -8,5 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './fooldal.html',
 })
 export class Fooldal {
-
+  protected readonly login=signal('Bejelentkezés');
+  protected readonly registration=signal('Regisztráció');
 }

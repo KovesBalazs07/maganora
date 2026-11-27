@@ -29,7 +29,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xl-6 ">
-            <button><u>Bejelentkezés</u></button>
+            <button (click)="href='bejelentkezes'"><u>{{login()}}</u></button>
         </div>
         <div class="col-xl-6 ">
             <h4>Ez egy weboldal, amely segítségével jelentkezhetsz matematika magánórára</h4>
@@ -44,7 +44,7 @@
     <br>
     <div class="row">
         <div class="col-xl-6 ">
-            <button><u>Regisztráció</u></button>
+            <button (click)="href='regisztracio'"><u>{{registration()}}</u></button>
         </div>
         <div class="col-xl-6 ">
             <h4>Figyelheted az időpontokat tanári illetve tanulói nézetből.</h4>

@@ -3,15 +3,16 @@ button{
     width: 300px;
     height: 40px;
     font-weight: bold;
+    border-style: solid;
 }
 
-h3, h1, h2 {
+h3, h1 {
     text-align: center;
 }
 
 #bod{
     background-color: rgb(8, 181, 181);
-    height: 1000px;
+    height: 720px;
 }
 
 nav{
@@ -21,5 +22,5 @@ nav{
 nav, .nav-link{
     font-weight: bolder;
     color: rgb(13, 13, 13);
-    background-color: rgb(22, 147, 169);
+    background-color: rgb(10, 159, 185);
 }
